@@ -21,7 +21,7 @@ var defaultCellColors = {
     level4: "#86efac"
 };
 export var ActivityHeatmap = function (_a) {
-    var activities = _a.activities, startDate = _a.startDate, endDate = _a.endDate, cellColors = _a.cellColors, renderTooltip = _a.renderTooltip, className = _a.className, style = _a.style, monthLabelStyle = _a.monthLabelStyle, tooltipStyle = _a.tooltipStyle, cellStyle = _a.cellStyle;
+    var activities = _a.activities, startDate = _a.startDate, endDate = _a.endDate, cellColors = _a.cellColors, renderTooltip = _a.renderTooltip, className = _a.className, style = _a.style, monthLabelStyle = _a.monthLabelStyle, tooltipStyle = _a.tooltipStyle, cellStyle = _a.cellStyle, onCellClick = _a.onCellClick;
     var today = new Date();
     var defaultStartDate = new Date(today);
     defaultStartDate.setDate(defaultStartDate.getDate() - 365);
@@ -36,6 +36,6 @@ export var ActivityHeatmap = function (_a) {
     return (_jsx("div", { className: "".concat(styles.scrollContainer, " ").concat(className !== null && className !== void 0 ? className : ""), style: style, children: _jsx("div", { className: styles.months, style: { gridTemplateColumns: gridTemplateColumns }, children: monthRanges.map(function (month, i) {
                 var heatmapMonthCells = getHeatmapMonthCells(activities, month.start, month.end);
                 var columnSizeInCells = columnSizesInCells[i];
-                return (_jsx(ActivityHeatmapMonth, { monthName: month.name, cells: heatmapMonthCells, columnSizeInCells: columnSizeInCells, cellColors: __assign(__assign({}, defaultCellColors), cellColors), renderTooltip: renderTooltip, monthLabelStyle: monthLabelStyle, tooltipStyle: tooltipStyle, cellStyle: cellStyle }, month.name + month.start.toISOString()));
+                return (_jsx(ActivityHeatmapMonth, { monthName: month.name, cells: heatmapMonthCells, columnSizeInCells: columnSizeInCells, cellColors: __assign(__assign({}, defaultCellColors), cellColors), renderTooltip: renderTooltip, monthLabelStyle: monthLabelStyle, tooltipStyle: tooltipStyle, cellStyle: cellStyle, onCellClick: onCellClick }, month.name + month.start.toISOString()));
             }) }) }));
 };

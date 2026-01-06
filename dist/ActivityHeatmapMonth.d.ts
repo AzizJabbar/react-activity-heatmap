@@ -9,6 +9,7 @@ type Props = {
     monthLabelStyle?: React.CSSProperties;
     tooltipStyle?: React.CSSProperties;
     cellStyle?: React.CSSProperties;
+    onCellClick?: (cell: HeatmapCell) => void;
 };
 export declare const ActivityHeatmapMonth: React.FC<Props>;
 export {};
