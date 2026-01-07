@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { CellColors, type HeatmapActivity, type HeatmapCell } from "./types";
 import { ActivityHeatmapMonth } from "./ActivityHeatmapMonth";
 import { getHeatmapMonthCells, getMonthRanges } from "./utils";
@@ -17,17 +17,21 @@ type Props = {
   tooltipStyle?: React.CSSProperties;
 };
 
-export const ActivityHeatmap: React.FC<Props> = ({
-  activities,
-  startDate,
-  endDate,
-  cellColors = { level0: "#3f3f46", level1: "#14532d", level2: "#15803d", level3: "#22c55e", level4: "#86efac" },
-  renderTooltip,
-  className,
-  style,
-  monthLabelStyle,
-  tooltipStyle,
-}) => {
+export const ActivityHeatmap = forwardRef<HTMLDivElement, Props>((
+  {
+    activities,
+    startDate,
+    endDate,
+    cellColors = { level0: "#3f3f46", level1: "#14532d", level2: "#15803d", level3: "#22c55e", level4: "#86efac" },
+    renderTooltip,
+    className,
+    style,
+    monthLabelStyle,
+    tooltipStyle,
+    ...rest
+  },
+  ref,
+) => {
   const today = new Date();
   const defaultStartDate = new Date(today);
   defaultStartDate.setDate(defaultStartDate.getDate() - 365);
@@ -44,7 +48,12 @@ export const ActivityHeatmap: React.FC<Props> = ({
   const gridTemplateColumns = columnSizesInCells.map((count) => `${count}fr`).join(" ");
 
   return (
-    <div className={`${styles.scrollContainer} ${className ?? ""}`} style={style}>
+    <div
+      ref={ref}
+      className={`${styles.scrollContainer} ${className ?? ""}`}
+      style={style}
+      {...rest}
+    >
       <div className={styles.months} style={{ gridTemplateColumns }}>
         {monthRanges.map((month, i) => {
           const heatmapMonthCells = getHeatmapMonthCells(activities, month.start, month.end);
@@ -66,4 +75,4 @@ export const ActivityHeatmap: React.FC<Props> = ({
       </div>
     </div>
   );
-};
+});
