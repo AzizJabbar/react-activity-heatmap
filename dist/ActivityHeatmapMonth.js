@@ -21,6 +21,6 @@ export var ActivityHeatmapMonth = function (_a) {
                     }
                     return (_jsxs(Tooltip, { content: renderTooltip
                             ? renderTooltip(cell)
-                            : "".concat(cell.count, " ").concat(cell.count === 1 ? "activity" : "activities", " on ").concat(cell.date), style: __assign({}, tooltipStyle), children: [_jsx("div", { onClick: function () { return onCellClick === null || onCellClick === void 0 ? void 0 : onCellClick(cell); }, className: styles.cell, style: __assign({ backgroundColor: getColor(cell.level, cellColors) }, cellStyle) }), " "] }, i));
+                            : "".concat(cell.count, " ").concat(cell.count === 1 ? "activity" : "activities", " on ").concat(cell.date), style: __assign({}, tooltipStyle), children: [_jsx("div", { onClick: function (e) { return onCellClick === null || onCellClick === void 0 ? void 0 : onCellClick(cell, e.currentTarget); }, className: styles.cell, style: __assign({ backgroundColor: getColor(cell.level, cellColors) }, cellStyle) }), " "] }, i));
                 }) }), columnSizeInCells >= 3 && (_jsx("div", { className: styles.monthName, style: monthLabelStyle, children: monthName.slice(0, 3) }))] }));
 };

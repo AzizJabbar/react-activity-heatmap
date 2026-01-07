@@ -39,6 +39,7 @@ export const ActivityHeatmap= forwardRef<HTMLDivElement, Props>(({
   tooltipStyle,
   cellStyle,
   onCellClick,
+  ...rest
 }, ref) => {
   const today = new Date();
   const defaultStartDate = new Date(today);

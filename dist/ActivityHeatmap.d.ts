@@ -11,7 +11,7 @@ type Props = {
     monthLabelStyle?: React.CSSProperties;
     tooltipStyle?: React.CSSProperties;
     cellStyle?: React.CSSProperties;
-    onCellClick?: (cell: HeatmapCell) => void;
+    onCellClick?: (cell: HeatmapCell, element: HTMLElement) => void;
 };
-export declare const ActivityHeatmap: React.FC<Props>;
+export declare const ActivityHeatmap: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLDivElement>>;
 export {};
